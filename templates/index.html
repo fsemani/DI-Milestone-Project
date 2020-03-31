@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Skeleton application demoing Heroku and Flask integration.">
+    <meta name="author" content="@gotoariel">
+    <!-- <link rel="icon" href="favicon.ico"> -->
+
+    <title>Stock Data Lookup</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-left">
+          <ul>
+            <p>
+              
+            </p>
+            <form id='index_app' method='post' action='about' > <!-- action is the URL you want to move to next-->
+            <p> Ticker symbol: <input type='text' name='Stock_Ticker' /> </p>
+            <p><input type="checkbox" name="Stock_Ticker" value = 1> High Price </br>
+            <input type="checkbox" name="Stock_Ticker" value = 2> Adj. High Price </br>
+            <input type="checkbox" name="Stock_Ticker" value = 3> Low Price </br>
+            <input type="checkbox" name="Stock_Ticker" value = 4> Adj. Low Price </p>
+            </p>
+            <input type='submit' value='Submit' /> <!-- value is the text that will appear on the button. -->
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </body>
+</html>
