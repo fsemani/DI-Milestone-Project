@@ -16,12 +16,6 @@ app.choices=[]
 
 @app.route('/', methods = ['GET','POST'])
 def index():
-    #if request.method == 'POST':
-    #    app.ticker['Ticker symbol'] = request.form.post(['ticker_symbol'])
-    #    app.choices['High Price'] = request.form.post(['highPrice'])
-    #    app.choices['Adj. High Price'] = request.form.post(['adjHighPrice'])
-    #    app.choices['Low Price'] = request.form.post(['lowPrice'])
-    #    app.choices['Adj. Low Price'] = request.form.post(['adjLowPrice'])  
     return render_template('index.html')
 
 @app.route('/about', methods = ['GET','POST'])
@@ -29,15 +23,11 @@ def about():
     
     if request.method == 'POST':
         app.choices = request.form.getlist('Stock_Ticker')
-        
-    #f = open('%s.txt'% app.choices[0],'w')
-    #f.write('Name: %s\n'% app.choices)
-    #f.close()
     
     filepath = 'https://www.quandl.com/api/v3/datasets/WIKI/'+app.choices[0]+'.csv'
     data = read_csv(filepath, index_col = 'Date', parse_dates = True )
     new_data = data.iloc[::-1]
-    new_index = pd.date_range(start='1980-12-12',end = '2018-03-27', freq = 'D')
+    new_index = pd.date_range(start=new_data.index[0],end = '2018-03-27', freq = 'D')
     new_data = new_data.reindex(new_index)
     subset_index = pd.date_range(start='2018-01-01',end = '2018-01-31',freq ='D')
     subset = new_data.loc[subset_index]
@@ -81,7 +71,7 @@ def about():
     css_resources = INLINE.render_css()
     title = 'Graph of ' + app.choices[0] + ' data'
     
-    return render_template('about.html', plot_script=script,plot_div=div,
+    return render_template('about.html', plot_script=script, plot_div=div,
                           js_resources = js_resources,
                           css_resources = css_resources, webpage_title = title )
 
