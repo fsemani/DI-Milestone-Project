@@ -14,9 +14,8 @@ A [finished example](https://lemurian.herokuapp.com) that demonstrates some basi
 - `Procfile`, `requirements.txt`, `conda-requirements.txt`, and `runtime.txt`
   contain some default settings.
 - There is some boilerplate HTML in `templates/`
-- Create Heroku application with `heroku create <app_name>` or leave blank to
-  auto-generate a name.
-- (Suggested) Use the [conda buildpack](https://github.com/thedataincubator/conda-buildpack).
+- Create Heroku application with: heroku create --buildpack https://github.com/thedataincubator/conda-buildpack.git#py3 <app.name>
+  (Suggested) Use the [conda buildpack](https://github.com/thedataincubator/conda-buildpack).
   If you choose not to, put all requirements into `requirements.txt`
 
   `heroku config:add BUILDPACK_URL=https://github.com/thedataincubator/conda-buildpack.git#py3`
