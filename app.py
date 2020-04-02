@@ -27,9 +27,9 @@ def about():
     filepath = 'https://www.quandl.com/api/v3/datasets/WIKI/'+app.choices[0]+'.csv'
     data = read_csv(filepath, index_col = 'Date', parse_dates = True )
     new_data = data.iloc[::-1]
-    new_index = pd.date_range(start=new_data.index[0],end = '2018-03-27', freq = 'D')
+    new_index = pd.date_range(start=new_data.index[0],end = new_data.index[-1], freq = 'D')
     new_data = new_data.reindex(new_index)
-    subset_index = pd.date_range(start='2018-01-01',end = '2018-01-31',freq ='D')
+    subset_index = pd.date_range(start='2017-01-01',end = '2017-01-31',freq ='D')
     subset = new_data.loc[subset_index]
     data_source = ColumnDataSource(subset.dropna())
     cols = []
@@ -45,7 +45,7 @@ def about():
             cols.append('Adj. Low')
         i = i+1
     
-    p = figure(x_axis_type = 'datetime', title="Quandl WIKI Stock Prices - Jan 2018")
+    p = figure(x_axis_type = 'datetime', title="Quandl WIKI Stock Prices - Jan 2017")
     p.xaxis.formatter = DatetimeTickFormatter(days = '%d')
     p.xgrid.grid_line_color = None
     p.ygrid.grid_line_color = None
